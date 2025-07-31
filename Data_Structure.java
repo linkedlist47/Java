@@ -9,7 +9,7 @@ class Node {
         this.next = null;
     }
 }
--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
   // Node class representing each element in the list
 class Node {
     int data;       // Data stored in the node
@@ -227,4 +227,87 @@ public class LinkedList {
         printList();  // Output: 10 -> 20 -> 30 -> null
     }
 }
+---------------------------------------------------------------------------------------------------------------------------------------------------------
+    //ithu AI&DS A oda tha bro, onga project ah open panuga
+
+package linear.linkedlist;
+import java.util.*;
+
+public class SL {
+    static Node head,newnode;
+
+    public static void main(String[] args) {
+        Scanner ob = new Scanner(System.in);
+        while(true) {
+            int data = ob.nextInt();
+            if(data == -1) {
+                break;
+            }
+     insert(data);
+        }
+      display();
+     int c = count();
+     System.out.print(c);
+     insertr(100, 3);
+    }
+    
+   
+    public static void insert(int data) {
+         newnode = new Node(data);
+        if(head == null) {
+            head = newnode;
+        } else {
+            Node temp = head;
+            while(temp.next != null) {
+                temp = temp.next;
+ 
+            }
+            temp.next = newnode;  
+        }
+    }
+    
+
+    public static void insertb(int data) {
+         newnode = new Node(data);
+        newnode.next = head;
+        head = newnode;
+    }
+    
+    
+    public static void display() {
+        Node temp = head;
+        while(temp != null) {
+            System.out.print(temp.data + " -> ");
+            temp = temp.next;
+        }
+        System.out.println("null");
+    }
+    public static int count(){
+        Node temp = head;
+        int c=0;
+        while(temp!=null) {
+            c++;
+            temp=temp.next;
+        }
+        return c;
+    } 
+    public static void insertr(int data,int n) {
+        Node temp = head;
+        newnode = new Node(data);
+        for(int i=0;i<n;i++) {
+         if(temp==null) {
+             return;
+         }            
+            temp = temp.next;
+        }
+       newnode.next= temp.next;
+       temp.next=newnode;
+       
+       System.out.printf("inserted : ", newnode.data);
+       display();
+    }
+    
+    
+}
+
 
