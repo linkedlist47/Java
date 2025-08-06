@@ -166,3 +166,36 @@ public class Main {
     }
 }
 ____________________________________________________________________________________________________________________________________________________________________________________________________________________
+class Main {
+    public static void main(String [] args) {
+        Library outer = new Library("Harverd","Harverd camps");
+        Library.Books inner = outer.new Books("Fyodor","Crime and Punishment",100);
+    }
+}
+class Library {
+    protected String libname;
+    protected String address;
+    Library(String l, String a) {
+        libname = l;
+        address = a;
+    }
+    class Books {
+         String authorname;
+         String bookname;
+         int price;
+        Books(String name, String book, int price) {
+           try {
+                this.authorname = name;
+                this.bookname = book;
+                this.price = price;
+                display();
+            } catch (Exception e) {
+                System.out.print("hehe");
+            }
+        }
+        void display() {
+            System.out.printf("Library : %s Library\nAddress : %s\n========================\nAuthorname: %s\nBook name: %s\nprice : %d",libname,address,authorname,bookname,price);
+        }
+    } 
+}
+____________________________________________________________________________________________________________________________________________________________________________________________________________________
