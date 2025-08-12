@@ -1,1 +1,60 @@
+🦇 Java Backend Utility Cheat Sheet
+1. Validation & String Handling
+Utility	What It Does	Example
+Pattern & Matcher	Regex validation (email, password strength, formats)	Pattern.compile("regex").matcher(str).matches();
+String.format()	Format strings dynamically	String.format("Hello %s", name)
+String.join()	Join list elements into a string	String.join(", ", list)
+Apache Commons StringUtils	Extra string utilities (if using dependency)	StringUtils.isBlank(str)
 
+2. IDs, Tokens & Randomness
+Utility	What It Does	Example
+UUID.randomUUID()	Generate unique IDs (sessions, users)	UUID id = UUID.randomUUID();
+SecureRandom	Cryptographically secure random numbers (OTP, tokens)	SecureRandom sr = new SecureRandom(); sr.nextInt(999999);
+
+3. Security & Hashing
+Utility	What It Does	Example
+MessageDigest	Create SHA-256/MD5 hashes for passwords	MessageDigest md = MessageDigest.getInstance("SHA-256");
+Base64	Encode/decode data	Base64.getEncoder().encodeToString(bytes);
+javax.crypto	Encrypt/decrypt data	AES, DES encryption for sensitive data
+
+4. Date & Time
+Utility	What It Does	Example
+LocalDate / LocalDateTime	Date/time without timezone	LocalDate.now()
+ZonedDateTime	Date/time with timezone awareness	ZonedDateTime.now(ZoneId.of("UTC"));
+DateTimeFormatter	Format/parse dates	DateTimeFormatter.ofPattern("yyyy-MM-dd")
+
+5. File Handling
+Utility	What It Does	Example
+Files.readAllLines()	Read file into list	Files.readAllLines(Paths.get("file.txt"))
+Files.write()	Write data to file	Files.write(path, bytes)
+BufferedReader / BufferedWriter	Read/write text efficiently	File I/O streams
+
+6. Database Operations
+Utility	What It Does	Example
+Connection (JDBC)	Connect to DB	DriverManager.getConnection(url, user, pass)
+PreparedStatement	Safe SQL execution (avoids injection)	PreparedStatement ps = conn.prepareStatement(sql)
+ResultSet	Handle query results	rs.getString("name")
+
+7. API & Networking
+Utility	What It Does	Example
+HttpClient (Java 11+)	Make HTTP requests	client.send(request, BodyHandlers.ofString())
+URLConnection	Legacy HTTP calls	new URL("http://...").openConnection()
+Gson / Jackson	Convert JSON ↔ Java Objects	new Gson().fromJson(json, User.class)
+
+8. Configuration
+Utility	What It Does	Example
+Properties	Load config files (.properties)	props.load(new FileInputStream("config.properties"));
+System.getenv()	Read environment variables	System.getenv("DB_PASSWORD")
+
+💡 Pro Tip for Backend
+When writing a backend in Java:
+
+For validation → use Pattern/Matcher for rules
+
+For security → hash passwords with MessageDigest + salt
+
+For DB work → always use PreparedStatement (never string concat SQL)
+
+For time → always use java.time API (never the old Date)
+
+For file handling → prefer Files over legacy I/O unless streaming large files
